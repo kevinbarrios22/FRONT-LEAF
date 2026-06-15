@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Planillas - Leaf Ltd</title>
+    <link rel="icon" href="imagenes/icono.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/tabler@2.27.0/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <img src="imagenes/logo.png" alt="Leaf Ltd" class="sidebar-logo" />
+                <span class="sidebar-brand-text">Leaf Ltd</span>
+            </div>
+            <nav class="sidebar-nav">
+                <span class="sidebar-label">Navegación</span>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar" id="avatarCircle">AD</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name" id="navUsername">Admin</div>
+                        <div class="sidebar-user-role" id="navRole">BOSS</div>
+                    </div>
+                    <a href="#" id="logoutBtnSidebar" class="sidebar-logout" title="Cerrar sesión">
+                        <i class="ti ti-logout"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="main-content">
+
+            <!-- Top bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                    <div>
+                        <h1 class="topbar-title">Planillas</h1>
+                        <p class="topbar-subtitle">Historial de planillas de delivery</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-date">
+                        <i class="ti ti-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+
+                <div id="alert" class="alert" style="display:none"></div>
+
+                <!-- Tabs -->
+                <div class="pln-tabs">
+                    <button class="pln-tab pln-tab-active" data-view="list">Todas</button>
+                    <button class="pln-tab" data-view="store">Por Tienda</button>
+                </div>
+
+                <!-- ========== LIST VIEW ========== -->
+                <div id="plnListView">
+
+                    <!-- Filters -->
+                    <div class="gen-toolbar">
+                        <div class="gen-toolbar-left">
+                            <input type="text" class="pln-filter-input" id="filterCliente" placeholder="Cliente" />
+                            <input type="date" class="pln-filter-date" id="filterFecha" />
+                            <input type="text" class="pln-filter-input" id="filterConductor" placeholder="Conductor" />
+                            <button class="gen-btn gen-btn-primary" id="btnFilter">
+                                <i class="ti ti-filter"></i> Filtrar
+                            </button>
+                            <button class="gen-btn gen-btn-outline" id="btnClear">
+                                <i class="ti ti-x"></i> Limpiar
+                            </button>
+                        </div>
+                        <div class="gen-toolbar-right">
+                            <button class="gen-btn gen-btn-outline" id="btnRefresh">
+                                <i class="ti ti-refresh"></i> Refrescar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="gen-summary">
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value" id="sumTotal">0</span>
+                            <span class="gen-summary-label">Planillas</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-green" id="sumFacturas">0</span>
+                            <span class="gen-summary-label">Facturas</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-blue" id="sumEntregados">0</span>
+                            <span class="gen-summary-label">Entregados</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-red" id="sumPendientes">0</span>
+                            <span class="gen-summary-label">Pendientes</span>
+                        </div>
+                    </div>
+
+                    <!-- Bulk actions -->
+                    <div class="pln-bulk-bar" id="plnBulkBar" style="display:none">
+                        <span id="plnSelectedCount">0</span> seleccionadas
+                        <button class="gen-btn gen-btn-outline" id="btnDeleteSelected" style="color:var(--red);margin-left:0.5rem">
+                            <i class="ti ti-trash"></i> Eliminar seleccionadas
+                        </button>
+                        <button class="gen-btn gen-btn-outline" id="btnSelectAll" style="margin-left:0.5rem">
+                            Seleccionar todo
+                        </button>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="gen-table-wrap">
+                        <table class="gen-table">
+                            <thead>
+                                <tr>
+                                    <th class="pln-col-cb"><input type="checkbox" id="plnCheckAll" title="Seleccionar todo" /></th>
+                                    <th>Fecha</th>
+                                    <th>Persona</th>
+                                    <th>Conductor</th>
+                                    <th>Placa</th>
+                                    <th>Hora</th>
+                                    <th>Fecha Entrega</th>
+                                    <th>Facturas</th>
+                                    <th>Entregados</th>
+                                    <th>Pendientes</th>
+                                    <th class="gen-col-actions"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="plnBody">
+                                <tr id="plnLoading">
+                                    <td colspan="11" class="gen-empty">
+                                        <i class="ti ti-loader"></i> Cargando...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- ========== STORE VIEW ========== -->
+                <div id="plnStoreView" style="display:none">
+
+                    <div class="gen-toolbar">
+                        <div class="gen-toolbar-left">
+                            <input type="text" class="pln-filter-input" id="storeFilter" placeholder="Buscar tienda..." style="min-width:250px" />
+                            <span class="pln-store-name" id="storeNameDisplay" style="display:none"></span>
+                        </div>
+                        <div class="gen-toolbar-right">
+                            <button class="gen-btn gen-btn-outline" id="btnStoreClear">
+                                <i class="ti ti-x"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Store summary -->
+                    <div class="gen-summary" id="storeSummary" style="display:none">
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value" id="storeSumPlanillas">0</span>
+                            <span class="gen-summary-label">Planillas</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-green" id="storeSumFacturas">0</span>
+                            <span class="gen-summary-label">Facturas</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-blue" id="storeSumEntregados">0</span>
+                            <span class="gen-summary-label">Entregados</span>
+                        </div>
+                        <div class="gen-summary-divider"></div>
+                        <div class="gen-summary-item">
+                            <span class="gen-summary-value gen-summary-red" id="storeSumPendientes">0</span>
+                            <span class="gen-summary-label">Pendientes</span>
+                        </div>
+                    </div>
+
+                    <!-- Store history table -->
+                    <div class="gen-table-wrap" id="storeTableWrap" style="display:none">
+                        <table class="gen-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Conductor</th>
+                                    <th>Persona</th>
+                                    <th>Cliente</th>
+                                    <th>Cantidad</th>
+                                    <th>Entregado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="storeBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Store store list -->
+                    <div class="pln-store-grid" id="storeGrid">
+                    </div>
+
+                </div>
+
+                <!-- ========== DETAIL VIEW ========== -->
+                <div id="plnDetailView" class="pln-detail" style="display:none">
+
+                    <div class="gen-toolbar">
+                        <div class="gen-toolbar-left">
+                            <button class="gen-btn gen-btn-outline" id="btnBack">
+                                <i class="ti ti-arrow-left"></i> Volver
+                            </button>
+                        </div>
+                        <div class="gen-toolbar-right">
+                            <button class="gen-btn gen-btn-success" id="btnSaveDetail">
+                                <i class="ti ti-device-floppy"></i> Guardar cambios
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pln-detail-info">
+                        <div class="pln-detail-field"><span class="pln-detail-label">Fecha</span><span class="pln-detail-value" id="detFecha">-</span></div>
+                        <div class="pln-detail-field"><span class="pln-detail-label">Persona</span><span class="pln-detail-value" id="detPersona">-</span></div>
+                        <div class="pln-detail-field"><span class="pln-detail-label">Conductor</span><span class="pln-detail-value" id="detConductor">-</span></div>
+                        <div class="pln-detail-field"><span class="pln-detail-label">Placa</span><span class="pln-detail-value" id="detPlaca">-</span></div>
+                        <div class="pln-detail-field"><span class="pln-detail-label">Hora</span><span class="pln-detail-value" id="detHora">-</span></div>
+                        <div class="pln-detail-field"><span class="pln-detail-label">Fecha Entrega</span><span class="pln-detail-value" id="detFechaEntrega">-</span></div>
+                    </div>
+
+                    <div class="gen-table-wrap">
+                        <table class="gen-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Cantidad</th>
+                                    <th>Entregado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="plnDetailBody">
+                                <tr><td colspan="3" class="gen-empty">Selecciona una planilla</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/planillas.js"></script>
+</body>
+
+</html>

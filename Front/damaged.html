@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bodega - Leaf Ltd</title>
+    <link rel="icon" href="imagenes/icono.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/tabler@2.27.0/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <img src="imagenes/logo.png" alt="Leaf Ltd" class="sidebar-logo" />
+                <span class="sidebar-brand-text">Leaf Ltd</span>
+            </div>
+            <nav class="sidebar-nav">
+                <span class="sidebar-label">Navegación</span>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar" id="avatarCircle">AD</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name" id="navUsername">Admin</div>
+                        <div class="sidebar-user-role" id="navRole">BOSS</div>
+                    </div>
+                    <a href="#" id="logoutBtnSidebar" class="sidebar-logout" title="Cerrar sesión">
+                        <i class="ti ti-logout"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="main-content">
+
+            <!-- Top bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                    <div>
+                        <h1 class="topbar-title">Bodega</h1>
+                        <p class="topbar-subtitle">Control de daños y devoluciones</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-date">
+                        <i class="ti ti-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                    
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+
+                <div id="alert" class="alert" style="display:none"></div>
+
+                <!-- Toolbar -->
+                <div class="gen-toolbar">
+                    <div class="gen-toolbar-left">
+                        <div class="gen-date-group">
+                            <label class="gen-date-label">Fecha</label>
+                            <input type="date" class="gen-date-input" id="damDate" />
+                        </div>
+                        <button class="gen-btn gen-btn-primary" id="btnToday">
+                            <i class="ti ti-calendar-stats"></i> Hoy
+                        </button>
+                        <button class="gen-btn gen-btn-outline" id="btnRefresh">
+                            <i class="ti ti-refresh"></i> Refrescar
+                        </button>
+                    </div>
+                    <div class="gen-toolbar-right">
+                        <button class="gen-btn gen-btn-outline" id="btnAddRow">
+                            <i class="ti ti-plus"></i> Añadir fila
+                        </button>
+                        <button class="gen-btn gen-btn-success" id="btnSave">
+                            <i class="ti ti-device-floppy"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="gen-summary">
+                    <div class="gen-summary-item">
+                        <span class="gen-summary-value" id="sumTotal">0</span>
+                        <span class="gen-summary-label">Total</span>
+                    </div>
+                    <div class="gen-summary-divider"></div>
+                    <div class="gen-summary-item">
+                        <span class="gen-summary-value gen-summary-red" id="sumPending">0</span>
+                        <span class="gen-summary-label">Pendiente</span>
+                    </div>
+                    <div class="gen-summary-divider"></div>
+                    <div class="gen-summary-item">
+                        <span class="gen-summary-value gen-summary-green" id="sumReviewed">0</span>
+                        <span class="gen-summary-label">Revisado</span>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="gen-table-wrap">
+                    <table class="gen-table">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Cantidad</th>
+                                <th>Revisado</th>
+                                <th>Fecha</th>
+                                <th class="gen-col-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="damBody">
+                            <tr id="damLoading">
+                                <td colspan="5" class="gen-empty">
+                                    <i class="ti ti-loader"></i> Cargando...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/damaged.js"></script>
+</body>
+
+</html>

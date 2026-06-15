@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard - Leaf Ltd</title>
+    <link rel="icon" href="imagenes/icono.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/tabler@2.27.0/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <img src="imagenes/logo.png" alt="Leaf Ltd" class="sidebar-logo" />
+                <span class="sidebar-brand-text">Leaf Ltd</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <span class="sidebar-label">Navegación</span>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar" id="avatarCircle">AD</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name" id="navUsername">Admin</div>
+                        <div class="sidebar-user-role" id="navRole">BOSS</div>
+                    </div>
+                    <a href="#" id="logoutBtnSidebar" class="sidebar-logout" title="Cerrar sesión">
+                        <i class="ti ti-logout"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="main-content">
+
+            <!-- Top bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                    <div>
+                        <h1 class="topbar-title">Dashboard</h1>
+                        <p class="topbar-subtitle" id="welcomeMsg">Bienvenido de nuevo</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-date">
+                        <i class="ti ti-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+
+                <!-- Alert -->
+                <div id="alert" class="alert" style="display:none"></div>
+
+                <!-- KPI -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon kpi-icon-emerald"><i class="ti ti-users"></i></div>
+                            <span class="kpi-trend kpi-trend-up" id="trendEmployees">+0%</span>
+                        </div>
+                        <div class="kpi-value" id="statEmployees">0</div>
+                        <div class="kpi-label">Empleados activos</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon kpi-icon-blue"><i class="ti ti-clock-check"></i></div>
+                            <span class="kpi-trend kpi-trend-neutral" id="trendAttendance">Hoy</span>
+                        </div>
+                        <div class="kpi-value" id="statAttendance">0</div>
+                        <div class="kpi-label">Asistencias registradas</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon kpi-icon-amber"><i class="ti ti-truck-delivery"></i></div>
+                            <span class="kpi-trend kpi-trend-neutral" id="trendDeliveries">Hoy</span>
+                        </div>
+                        <div class="kpi-value" id="statDeliveries">0</div>
+                        <div class="kpi-label">Entregas realizadas</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon kpi-icon-red"><i class="ti ti-box-off"></i></div>
+                            <span class="kpi-trend kpi-trend-neutral" id="trendDamaged">Hoy</span>
+                        </div>
+                        <div class="kpi-value" id="statDamaged">0</div>
+                        <div class="kpi-label">Productos dañados</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="section-header">
+                    <h2><i class="ti ti-zap"></i> Acciones rápidas</h2>
+                </div>
+                <div class="quick-actions">
+                    <a href="attendance.html" class="qa-card" id="qaAttendance">
+                        <div class="qa-icon qa-icon-emerald"><i class="ti ti-clock"></i></div>
+                        <span class="qa-label">Marcar entrada</span>
+                    </a>
+                    <a href="delivery.html" class="qa-card" id="qaDelivery">
+                        <div class="qa-icon qa-icon-blue"><i class="ti ti-truck-delivery"></i></div>
+                        <span class="qa-label">Nueva entrega</span>
+                    </a>
+                    <a href="damaged.html" class="qa-card" id="qaDamaged">
+                        <div class="qa-icon qa-icon-amber"><i class="ti ti-box-off"></i></div>
+                        <span class="qa-label">Producto dañado</span>
+                    </a>
+                    <a href="employees.html" class="qa-card" id="qaEmployees">
+                        <div class="qa-icon qa-icon-purple"><i class="ti ti-user-plus"></i></div>
+                        <span class="qa-label">Nuevo empleado</span>
+                    </a>
+                </div>
+
+                <!-- Modules -->
+                <div class="section-header">
+                    <h2><i class="ti ti-apps"></i> Módulos</h2>
+                </div>
+                <div class="module-grid" id="moduleCards">
+                    <a href="attendance.html" class="module-card" id="cardAttendance">
+                        <div class="module-icon-wrap module-icon-green"><i class="ti ti-clock"></i></div>
+                        <div class="module-info">
+                            <div class="module-title">Asistencia</div>
+                            <div class="module-desc">Control de entrada, salida e historial</div>
+                        </div>
+                        <i class="ti ti-chevron-right module-arrow"></i>
+                    </a>
+                    <a href="delivery.html" class="module-card" id="cardDelivery">
+                        <div class="module-icon-wrap module-icon-blue"><i class="ti ti-truck-delivery"></i></div>
+                        <div class="module-info">
+                            <div class="module-title">Delivery</div>
+                            <div class="module-desc">Planillas de entregas por repartidor</div>
+                        </div>
+                        <i class="ti ti-chevron-right module-arrow"></i>
+                    </a>
+                    <a href="damaged.html" class="module-card" id="cardDamaged">
+                        <div class="module-icon-wrap module-icon-amber"><i class="ti ti-box-off"></i></div>
+                        <div class="module-info">
+                            <div class="module-title">Bodega</div>
+                            <div class="module-desc">Registro de productos dañados</div>
+                        </div>
+                        <i class="ti ti-chevron-right module-arrow"></i>
+                    </a>
+                    <a href="employees.html" class="module-card" id="cardEmployees">
+                        <div class="module-icon-wrap module-icon-teal"><i class="ti ti-users"></i></div>
+                        <div class="module-info">
+                            <div class="module-title">Empleados</div>
+                            <div class="module-desc">Gestión del personal activo</div>
+                        </div>
+                        <i class="ti ti-chevron-right module-arrow"></i>
+                    </a>
+                    <a href="users.html" class="module-card" id="cardUsers">
+                        <div class="module-icon-wrap module-icon-purple"><i class="ti ti-user-cog"></i></div>
+                        <div class="module-info">
+                            <div class="module-title">Usuarios</div>
+                            <div class="module-desc">Cuentas de acceso y roles</div>
+                        </div>
+                        <i class="ti ti-chevron-right module-arrow"></i>
+                    </a>
+                </div>
+
+                <!-- Activity -->
+                <div class="section-header">
+                    <h2><i class="ti ti-activity"></i> Actividad reciente</h2>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-empty">
+                        <i class="ti ti-inbox"></i>
+                        <p>Aún no hay actividad reciente</p>
+                    </div>
+                </div>
+
+                <!-- Data Backup -->
+                <div class="section-header">
+                    <h2><i class="ti ti-database"></i> Datos</h2>
+                </div>
+                <div class="activity-card">
+                    <div class="backup-section">
+                        <button class="gen-btn gen-btn-outline" id="btnExport">
+                            <i class="ti ti-download"></i> Exportar datos
+                        </button>
+                        <button class="gen-btn gen-btn-outline" id="btnImport">
+                            <i class="ti ti-upload"></i> Importar datos
+                        </button>
+                        <input type="file" id="fileInput" accept=".json" />
+                    </div>
+                    <div class="cleanup-section" style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border)">
+                        <label style="font-size:12px;color:var(--text-muted);display:block;margin-bottom:0.4rem">
+                            <i class="ti ti-trash"></i> Limpiar planillas anteriores a:
+                        </label>
+                        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+                            <select id="cleanupMonths" class="gen-select" style="min-width:100px">
+                                <option value="1">1 mes</option>
+                                <option value="3" selected>3 meses</option>
+                                <option value="6">6 meses</option>
+                                <option value="12">12 meses</option>
+                            </select>
+                            <button class="gen-btn gen-btn-outline" id="btnCleanup" style="color:var(--red)">
+                                <i class="ti ti-trash"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    &copy; 2026 Leaf Ltd &mdash; Todos los derechos reservados
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cleanup Modal -->
+    <div class="rep-modal-overlay" id="cleanupModal" style="display:none">
+        <div class="rep-modal cleanup-modal">
+            <div class="rep-modal-header">
+                <h3 class="rep-modal-title" id="cleanupTitle">Planillas a eliminar</h3>
+                <button class="rep-modal-close" id="cleanupModalClose"><i class="ti ti-x"></i></button>
+            </div>
+            <div class="rep-modal-body">
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.75rem" id="cleanupDesc"></p>
+                <div class="cleanup-actions">
+                    <label><input type="checkbox" id="cleanupSelectAll" checked /> Seleccionar todo</label>
+                </div>
+                <div class="gen-table-wrap" style="max-height:320px;overflow-y:auto">
+                    <table class="gen-table">
+                        <thead>
+                            <tr>
+                                <th style="width:36px"></th>
+                                <th>Fecha</th>
+                                <th>Persona</th>
+                                <th>Conductor</th>
+                                <th>Facturas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cleanupBody"></tbody>
+                    </table>
+                </div>
+                <div class="cleanup-footer">
+                    <span id="cleanupCount">0</span> seleccionadas
+                    <div style="margin-left:auto;display:flex;gap:0.5rem">
+                        <button class="gen-btn gen-btn-outline" id="cleanupCancel">Cancelar</button>
+                        <button class="gen-btn gen-btn-outline" id="cleanupDelete" style="color:var(--red)">
+                            <i class="ti ti-trash"></i> Eliminar seleccionadas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

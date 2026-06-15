@@ -1,0 +1,286 @@
+/* ===========================
+   LEAF Ltd — Login styles
+   Requiere: Tabler CSS + Icons
+=========================== */
+
+:root {
+    --leaf-green: #5caa1d;
+    --leaf-green-dark: #5caa1d;
+    --leaf-green-light: #ffffff;
+    --leaf-green-mid: #C0DD97;
+    --focus-ring: rgba(59, 109, 17, 0.14);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ---------- Page ---------- */
+body {
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.logo-img {
+    height: 90px;
+    width: autox;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 13px;
+}
+
+.page.page-center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.container.container-tight {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ---------- Brand ---------- */
+.text-center.mb-4 {
+    text-align: center;
+    margin-bottom: 2rem !important;
+}
+
+.navbar-brand h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--leaf-green);
+    letter-spacing: 4px;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-brand h1::before {
+    content: "\eb88";
+    font-family: "tabler-icons";
+    font-size: 28px;
+    color: var(--leaf-);
+}
+
+.navbar-brand {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Subtítulo debajo del logo */
+.navbar-brand::after {
+
+    display: block;
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+    letter-spacing: .5px;
+    margin-top: 4px;
+}
+
+/* ---------- Card ---------- */
+.card.card-md {
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.card.card-md .card-body {
+    padding: 2rem 2rem 1.75rem;
+}
+
+/* ---------- Card title ---------- */
+.card-body .h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+    text-align: center;
+    margin-bottom: 1.75rem !important;
+}
+
+/* ---------- Form labels ---------- */
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ---------- Inputs ---------- */
+.form-control {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    -webkit-appearance: none;
+}
+
+.form-control::placeholder {
+    color: #b0b8c4;
+}
+
+.form-control:hover {
+    border-color: #aab4be;
+}
+
+.form-control:focus {
+    border-color: var(--leaf-green);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* ---------- Input group (password) ---------- */
+.input-group.input-group-flat {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.input-group.input-group-flat:focus-within {
+    border-color: var(--leaf-green);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.input-group.input-group-flat .form-control {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+    height: 40px;
+}
+
+.input-group.input-group-flat .form-control:focus {
+    box-shadow: none;
+}
+
+.input-group-text {
+    padding: 0 12px;
+    border-left: 1px solid #e8eaed;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
+
+.input-group-text .link-secondary {
+    color: #9aa3af;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.input-group-text .link-secondary:hover {
+    color: var(--leaf-green);
+}
+
+.input-group-text .ti {
+    font-size: 17px;
+}
+
+/* ---------- Forgot password ---------- */
+.form-label-description {
+    font-size: 12px;
+    text-align: right;
+    display: block;
+}
+
+.form-label-description a {
+    color: #9aa3af;
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.form-label-description a:hover {
+    color: var(--leaf-green);
+}
+
+/* ---------- Submit button ---------- */
+.btn.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 42px;
+    background: var(--leaf-green);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: .2px;
+    transition: background .15s ease, transform .1s ease;
+    -webkit-appearance: none;
+}
+
+.btn.btn-primary::before {
+    content: "\eb1c";
+    font-family: "tabler-icons";
+    font-size: 17px;
+}
+
+.btn.btn-primary:hover {
+    background: var(--leaf-green-dark);
+}
+
+.btn.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* ---------- Top accent border ---------- */
+.border-top-wide.border-primary {
+    border-top: 3px solid var(--leaf-green) !important;
+}
+
+/* ---------- Spacing helpers ---------- */
+.mb-2 {
+    margin-bottom: .5rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 440px) {
+    .card.card-md .card-body {
+        padding: 1.5rem 1.25rem;
+    }
+}

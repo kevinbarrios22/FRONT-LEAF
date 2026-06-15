@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Delivery - Leaf Ltd</title>
+    <link rel="icon" href="imagenes/icono.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/tabler@2.27.0/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <img src="imagenes/logo.png" alt="Leaf Ltd" class="sidebar-logo" />
+                <span class="sidebar-brand-text">Leaf Ltd</span>
+            </div>
+            <nav class="sidebar-nav">
+                <span class="sidebar-label">Navegación</span>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar" id="avatarCircle">AD</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name" id="navUsername">Admin</div>
+                        <div class="sidebar-user-role" id="navRole">BOSS</div>
+                    </div>
+                    <a href="#" id="logoutBtnSidebar" class="sidebar-logout" title="Cerrar sesión">
+                        <i class="ti ti-logout"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="main-content">
+
+            <!-- Top bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                    <div>
+                        <h1 class="topbar-title">Delivery</h1>
+                        <p class="topbar-subtitle">Planilla de entregas</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-date">
+                        <i class="ti ti-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                    
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+
+                <div id="alert" class="alert" style="display:none"></div>
+
+                <!-- Toolbar -->
+                <div class="del-toolbar">
+                    <div class="del-toolbar-left">
+                        <div class="del-date-group">
+                            <label class="del-date-label">Fecha</label>
+                            <input type="date" class="del-date-input" id="delDate" />
+                        </div>
+                        <button class="del-btn del-btn-primary" id="btnToday">
+                            <i class="ti ti-calendar-stats"></i> Hoy
+                        </button>
+                        <button class="del-btn del-btn-outline" id="btnRefresh">
+                            <i class="ti ti-refresh"></i> Refrescar
+                        </button>
+                    </div>
+                    <div class="del-toolbar-right">
+                        <button class="del-btn del-btn-outline" id="btnAddRow">
+                            <i class="ti ti-plus"></i> Añadir fila
+                        </button>
+                        <button class="del-btn del-btn-success" id="btnSave">
+                            <i class="ti ti-device-floppy"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="del-info">
+                    <div class="del-info-field">
+                        <label class="del-info-label">Persona</label>
+                        <input type="text" class="del-info-input" id="delPersona" placeholder="Nombre" />
+                    </div>
+                    <div class="del-info-field">
+                        <label class="del-info-label">Conductor</label>
+                        <input type="text" class="del-info-input" id="delDriver" placeholder="Nombre del conductor" />
+                    </div>
+                    <div class="del-info-field">
+                        <label class="del-info-label">Placa del van</label>
+                        <input type="text" class="del-info-input" id="delPlaca" placeholder="ABC-123" />
+                    </div>
+                    <div class="del-info-field">
+                        <label class="del-info-label">Hora</label>
+                        <input type="time" class="del-info-input" id="delTime" />
+                    </div>
+                    <div class="del-info-field">
+                        <label class="del-info-label">Fecha entrega</label>
+                        <input type="date" class="del-info-input" id="delDeliveryDate" />
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="del-summary">
+                    <div class="del-summary-item">
+                        <span class="del-summary-value" id="sumTotal">0</span>
+                        <span class="del-summary-label">Facturas</span>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="del-table-wrap">
+                    <table class="del-table">
+                        <thead>
+                            <tr>
+                                <th class="del-col-customer">Customer</th>
+                                <th class="del-col-qty">Cantidad</th>
+                                <th class="del-col-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="delBody">
+                            <tr id="delLoading">
+                                <td colspan="3" class="del-empty">
+                                    <i class="ti ti-loader"></i> Cargando facturas...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/delivery.js"></script>
+</body>
+
+</html>

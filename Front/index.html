@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login-Leaf Ltd</title>
+
+    <link rel="icon"
+       href = "imagenes/icono.png" type = "image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/tabler@2.27.0/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column">
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="card card-md">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <a href="dashboard.html" class="navbar-brand navbar-brand-autodark">
+                            <img src="imagenes/logo.png" alt="LEAF Ltd" class="logo-img" />
+                        </a>
+                    </div>
+
+                    <form id="loginForm" autocomplete="off">
+                        <div class="mb-3">
+                            <label class="form-label">User</label>
+                            <input type="text" class="form-control" id="username" placeholder="leaflimited"
+                                autocomplete="off" required />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Password</label>
+                            <div class="input-group input-group-flat">
+                                <input type="password" class="form-control" id="password" placeholder="********"
+                                    autocomplete="off" required />
+                                <span class="input-group-text">
+                                    <a href="#" class="link-secondary" id="togglePassword" title="Mostrar contraseña">
+                                        <i class="ti ti-eye"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="form-label-description d-block mb-4">
+                            <a href="#">Forgot your password?</a>
+                        </span>
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
